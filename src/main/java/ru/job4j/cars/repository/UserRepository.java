@@ -19,9 +19,10 @@ public class UserRepository {
         try {
             session.beginTransaction();
             session.save(user);
-            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
         return user;
     }
@@ -30,10 +31,16 @@ public class UserRepository {
         Session session = sf.getCurrentSession();
         try {
             session.beginTransaction();
-            session.update(user);
-            session.getTransaction().commit();
+            session.createQuery(
+                            "UPDATE User SET login = :fLogin, password = :fPassword WHERE id = :fId")
+                    .setParameter("fId", user.getId())
+                    .setParameter("fLogin", user.getLogin())
+                    .setParameter("fPassword", user.getPassword())
+                    .executeUpdate();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
     }
 
@@ -45,9 +52,10 @@ public class UserRepository {
                             "DELETE User WHERE id = :fId")
                     .setParameter("fId", userId)
                     .executeUpdate();
-            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
     }
 
@@ -58,25 +66,27 @@ public class UserRepository {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User", User.class);
             rsl = query.getResultList();
-            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
         return rsl;
     }
 
     public Optional<User> findById(int userId) {
-        User rsl = new User();
+        Optional rsl = Optional.empty();
         Session session = sf.getCurrentSession();
         try {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User AS i WHERE i.id = :fId", User.class).setParameter("fId", userId);
-            rsl = query.uniqueResult();
-            session.getTransaction().commit();
+            rsl = query.uniqueResultOptional();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
-        return Optional.ofNullable(rsl);
+        return rsl;
     }
 
     public List<User> findByLikeLogin(String key) {
@@ -86,24 +96,26 @@ public class UserRepository {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User WHERE login LIKE :fLogin").setParameter("fLogin", key);
             rsl = query.getResultList();
-            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
         return rsl;
     }
 
     public Optional<User> findByLogin(String login) {
-        User rsl = new User();
+        Optional rsl = Optional.empty();
         Session session = sf.getCurrentSession();
         try {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User AS i WHERE i.login = :fLogin", User.class).setParameter("fLogin", login);
-            rsl = query.uniqueResult();
-            session.getTransaction().commit();
+            rsl = query.uniqueResultOptional();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.getTransaction().commit();
         }
-        return Optional.ofNullable(rsl);
+        return rsl;
     }
 }
