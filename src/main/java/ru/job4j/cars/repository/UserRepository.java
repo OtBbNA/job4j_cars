@@ -19,10 +19,13 @@ public class UserRepository {
         try {
             session.beginTransaction();
             session.save(user);
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
-            session.getTransaction().commit();
+            if (session != null) {
+                session.close();
+            }
         }
         return user;
     }
@@ -37,10 +40,13 @@ public class UserRepository {
                     .setParameter("fLogin", user.getLogin())
                     .setParameter("fPassword", user.getPassword())
                     .executeUpdate();
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
-            session.getTransaction().commit();
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
@@ -52,10 +58,13 @@ public class UserRepository {
                             "DELETE User WHERE id = :fId")
                     .setParameter("fId", userId)
                     .executeUpdate();
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
-            session.getTransaction().commit();
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
@@ -66,10 +75,13 @@ public class UserRepository {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User", User.class);
             rsl = query.getResultList();
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
-            session.getTransaction().commit();
+            if (session != null) {
+                session.close();
+            }
         }
         return rsl;
     }
@@ -81,10 +93,13 @@ public class UserRepository {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User AS i WHERE i.id = :fId", User.class).setParameter("fId", userId);
             rsl = query.uniqueResultOptional();
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
-            session.getTransaction().commit();
+            if (session != null) {
+                session.close();
+            }
         }
         return rsl;
     }
@@ -96,10 +111,13 @@ public class UserRepository {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User WHERE login LIKE :fLogin").setParameter("fLogin", key);
             rsl = query.getResultList();
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
-            session.getTransaction().commit();
+            if (session != null) {
+                session.close();
+            }
         }
         return rsl;
     }
@@ -111,10 +129,13 @@ public class UserRepository {
             session.getTransaction().begin();
             Query<User> query = session.createQuery("FROM User AS i WHERE i.login = :fLogin", User.class).setParameter("fLogin", login);
             rsl = query.uniqueResultOptional();
+            session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
-            session.getTransaction().commit();
+            if (session != null) {
+                session.close();
+            }
         }
         return rsl;
     }
