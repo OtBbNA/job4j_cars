@@ -1,14 +1,15 @@
-package ru.job4j.cars.repository;
+package ru.job4j.cars.repository.user;
 
 import lombok.AllArgsConstructor;
 import ru.job4j.cars.model.User;
+import ru.job4j.cars.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 @AllArgsConstructor
-public class UserRepository {
+public class SimpleUserRepository implements UserRepository {
     private final CrudRepository crudRepository;
 
     /**
@@ -16,6 +17,7 @@ public class UserRepository {
      * @param user пользователь.
      * @return пользователь с id.
      */
+    @Override
     public User create(User user) {
         crudRepository.run(session -> session.persist(user));
         return user;
@@ -25,6 +27,7 @@ public class UserRepository {
      * Обновить в базе пользователя.
      * @param user пользователь.
      */
+    @Override
     public void update(User user) {
         crudRepository.run(session -> session.merge(user));
     }
@@ -33,6 +36,7 @@ public class UserRepository {
      * Удалить пользователя по id.
      * @param userId ID
      */
+    @Override
     public void delete(int userId) {
         crudRepository.run(
                 "delete from User where id = :fId",
@@ -44,6 +48,7 @@ public class UserRepository {
      * Список пользователь отсортированных по id.
      * @return список пользователей.
      */
+    @Override
     public List<User> findAllOrderById() {
         return crudRepository.query("from User order by id asc", User.class);
     }
@@ -52,6 +57,7 @@ public class UserRepository {
      * Найти пользователя по ID
      * @return пользователь.
      */
+    @Override
     public Optional<User> findById(int userId) {
         return crudRepository.optional(
                 "from User where id = :fId", User.class,
@@ -64,6 +70,7 @@ public class UserRepository {
      * @param key key
      * @return список пользователей.
      */
+    @Override
     public List<User> findByLikeLogin(String key) {
         return crudRepository.query(
                 "from User where login like :fKey", User.class,
@@ -76,6 +83,7 @@ public class UserRepository {
      * @param login login.
      * @return Optional or user.
      */
+    @Override
     public Optional<User> findByLogin(String login) {
         return crudRepository.optional(
                 "from User where login = :fLogin", User.class,

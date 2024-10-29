@@ -5,6 +5,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import ru.job4j.cars.model.User;
+import ru.job4j.cars.repository.user.SimpleUserRepository;
 
 public class UserUsage {
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ public class UserUsage {
         try (SessionFactory sf = new MetadataSources(registry)
                 .buildMetadata().buildSessionFactory()) {
             var cd = new CrudRepository(sf);
-            var userRepository = new UserRepository(cd);
+            var userRepository = new SimpleUserRepository(cd);
             var user = new User();
             user.setLogin("admin");
             user.setPassword("admin");

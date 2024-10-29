@@ -1,5 +1,4 @@
-create table auto_post
-(
+CREATE TABLE auto_post (
     id              serial      primary key,
     description     varchar     unique not null,
     created         timestamp   not null,

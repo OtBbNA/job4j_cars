@@ -28,4 +28,8 @@ public class Post {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "auto_post_id")
     private List<PriceHistory> priceHistories;
+
+    @OneToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 }
