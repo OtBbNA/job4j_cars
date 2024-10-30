@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,4 +33,8 @@ public class Post {
     @OneToOne
     @JoinColumn(name = "car_id")
     private Car car;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
+    private List<File> files = new ArrayList<>();
 }

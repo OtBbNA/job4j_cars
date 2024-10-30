@@ -1,5 +1,6 @@
 package ru.job4j.cars.repository.post;
 
+import ru.job4j.cars.model.Brand;
 import ru.job4j.cars.model.Post;
 
 import java.util.List;
@@ -16,4 +17,10 @@ public interface PostRepository {
     Optional<Post> findById(int postId);
 
     List<Post> findAllOrderById();
+
+    List<Post> findAllByLastDay();
+
+    List<Post> findAllByImage();
+
+    List<Post> findAllByBrand(Brand brand);
 }
