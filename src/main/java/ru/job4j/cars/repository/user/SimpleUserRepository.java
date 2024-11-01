@@ -1,6 +1,7 @@
 package ru.job4j.cars.repository.user;
 
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 import ru.job4j.cars.model.User;
 import ru.job4j.cars.repository.CrudRepository;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Repository
 @AllArgsConstructor
 public class SimpleUserRepository implements UserRepository {
     private final CrudRepository crudRepository;

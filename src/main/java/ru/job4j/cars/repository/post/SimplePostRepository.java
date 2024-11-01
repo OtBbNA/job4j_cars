@@ -6,7 +6,6 @@ import ru.job4j.cars.model.Brand;
 import ru.job4j.cars.model.Post;
 import ru.job4j.cars.repository.CrudRepository;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +19,7 @@ public class SimplePostRepository implements PostRepository {
 
     @Override
     public Post create(Post post) {
-        crudRepository.run(session -> session.persist(post));
+        crudRepository.run(session -> session.save(post));
         return post;
     }
 
@@ -52,17 +51,16 @@ public class SimplePostRepository implements PostRepository {
 
     @Override
     public List<Post> findAllByLastDay() {
-        var dayAgo = LocalDateTime.now().minusDays(1);
-        return crudRepository.query("from Post where created >= :fNow", Post.class, Map.of("fNow", Timestamp.valueOf(dayAgo)));
+        return crudRepository.query("from Post where created >= :fDayAgo", Post.class, Map.of("fDayAgo", LocalDateTime.now().minusDays(1)));
     }
 
     @Override
     public List<Post> findAllByImage() {
-        return crudRepository.query("from Post where files != null", Post.class);
+        return crudRepository.query("from Post p where size(p.files) != 0", Post.class);
     }
 
     @Override
     public List<Post> findAllByBrand(Brand brand) {
-        return crudRepository.query("from Post where brand == :fBrand", Post.class, Map.of("fBrand", brand));
+        return crudRepository.query("from Post p where p.car.brand = :fBrand", Post.class, Map.of("fBrand", brand));
     }
 }

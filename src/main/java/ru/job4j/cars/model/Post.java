@@ -20,7 +20,7 @@ public class Post {
 
     private String description;
 
-    private LocalDateTime created = LocalDateTime.now();
+    private LocalDateTime created = LocalDateTime.now().withNano(0);
 
     @ManyToOne
     @JoinColumn(name = "auto_user_id")
@@ -34,7 +34,7 @@ public class Post {
     @JoinColumn(name = "car_id")
     private Car car;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private List<File> files = new ArrayList<>();
 }

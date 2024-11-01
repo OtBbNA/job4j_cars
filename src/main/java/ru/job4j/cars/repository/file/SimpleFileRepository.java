@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.cars.model.File;
 import ru.job4j.cars.repository.CrudRepository;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -16,7 +17,7 @@ public class SimpleFileRepository implements FileRepository {
 
     @Override
     public File save(File file) {
-        crudRepository.run(session -> session.persist(file));
+        crudRepository.run(session -> session.save(file));
         return file;
     }
 
@@ -26,6 +27,11 @@ public class SimpleFileRepository implements FileRepository {
                 "from File where id = :fId", File.class,
                 Map.of("fId", fileId)
         );
+    }
+
+    @Override
+    public List<File> findAll() {
+        return crudRepository.query("from File", File.class);
     }
 
     @Override
