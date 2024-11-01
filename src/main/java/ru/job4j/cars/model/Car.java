@@ -35,7 +35,7 @@ public class Car {
                     @JoinColumn(name = "owner_id", nullable = false, updatable = false)})
     private Set<Owner> owners = new HashSet<>();
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brand;
 }

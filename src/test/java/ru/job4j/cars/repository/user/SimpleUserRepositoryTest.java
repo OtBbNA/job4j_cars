@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.cars.model.Car;
 import ru.job4j.cars.model.User;
 import ru.job4j.cars.repository.CrudRepository;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Transactional
 class SimpleUserRepositoryTest {
 
     private static UserRepository userRepository;

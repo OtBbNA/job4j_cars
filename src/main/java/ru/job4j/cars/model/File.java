@@ -19,4 +19,7 @@ public class File {
     private String name;
 
     private String path;
+
+    @Column(name = "auto_post_id")
+    private int postId;
 }

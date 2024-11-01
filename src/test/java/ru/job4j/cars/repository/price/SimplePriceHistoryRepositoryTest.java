@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.cars.model.Car;
 import ru.job4j.cars.model.PriceHistory;
 import ru.job4j.cars.repository.CrudRepository;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Transactional
 class SimplePriceHistoryRepositoryTest {
 
     private static PriceHistoryRepository simplePriceHistoryRepository;

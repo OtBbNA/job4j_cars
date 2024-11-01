@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.cars.model.Brand;
 import ru.job4j.cars.repository.CrudRepository;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Transactional
 class SimpleBrandRepositoryTest {
 
     private static BrandRepository brandRepository;

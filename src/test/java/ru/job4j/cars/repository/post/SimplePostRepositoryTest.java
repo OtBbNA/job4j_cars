@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.cars.model.Brand;
 import ru.job4j.cars.model.Car;
 import ru.job4j.cars.model.File;
@@ -19,14 +20,15 @@ import ru.job4j.cars.repository.car.SimpleCarRepository;
 import ru.job4j.cars.repository.file.FileRepository;
 import ru.job4j.cars.repository.file.SimpleFileRepository;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Transactional
 class SimplePostRepositoryTest {
 
+    private static SessionFactory sf;
     private static PostRepository postRepository;
     private static FileRepository fileRepository;
     private static CarRepository carRepository;
@@ -35,7 +37,7 @@ class SimplePostRepositoryTest {
     @BeforeAll
     public static void init() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
-        SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         postRepository = new SimplePostRepository(new CrudRepository(sf));
         fileRepository = new SimpleFileRepository(new CrudRepository(sf));
         carRepository = new SimpleCarRepository(new CrudRepository(sf));
@@ -142,24 +144,32 @@ class SimplePostRepositoryTest {
 
     @Test
     void whenFindAllByImageThenGetListByPostsWithImage() {
-        File file1 = new File();
-        File file2 = new File();
-        fileRepository.save(file1);
-        fileRepository.save(file2);
-        List<File> files1 = List.of(file1);
-        List<File> files2 = List.of(file2);
-
         Post post1 = new Post();
-        Post post2 = new Post();
-        Post post3 = new Post();
         post1.setDescription("test1");
+        Post post2 = new Post();
         post2.setDescription("test2");
-        post3.setDescription("test3");
-        post1.setFiles(files1);
-        post2.setFiles(files2);
+
         postRepository.create(post1);
         postRepository.create(post2);
-        postRepository.create(post3);
+
+        File file1 = new File();
+        file1.setName("file1");
+        file1.setPath("path1");
+        file1.setPostId(post1.getId());
+
+        File file2 = new File();
+        file2.setName("file2");
+        file2.setPath("path2");
+        file2.setPostId(post2.getId());
+
+        fileRepository.save(file1);
+        fileRepository.save(file2);
+
+        post1.setFiles(List.of(file1));
+        post2.setFiles(List.of(file2));
+
+        postRepository.update(post1);
+        postRepository.update(post2);
 
         var expected = List.of(post1, post2);
         var result = postRepository.findAllByImage();
@@ -169,6 +179,13 @@ class SimplePostRepositoryTest {
 
     @Test
     void whenFindAllByBrandThenGetListOfPostsWithThisBrand() {
+        Post post1 = new Post();
+        Post post2 = new Post();
+        Post post3 = new Post();
+        post1.setDescription("test1");
+        post2.setDescription("test2");
+        post3.setDescription("test3");
+
         Brand brand1 = new Brand();
         Brand brand2 = new Brand();
         brand1.setName("toyota");
@@ -185,13 +202,6 @@ class SimplePostRepositoryTest {
         carRepository.create(car1);
         carRepository.create(car2);
         carRepository.create(car3);
-
-        Post post1 = new Post();
-        Post post2 = new Post();
-        Post post3 = new Post();
-        post1.setDescription("test1");
-        post2.setDescription("test2");
-        post3.setDescription("test3");
 
         post1.setCar(car1);
         post2.setCar(car2);

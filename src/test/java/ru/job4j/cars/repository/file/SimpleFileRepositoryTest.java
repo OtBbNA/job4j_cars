@@ -7,11 +7,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 import ru.job4j.cars.model.File;
 import ru.job4j.cars.repository.CrudRepository;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Transactional
 class SimpleFileRepositoryTest {
 
     private static FileRepository fileRepository;
