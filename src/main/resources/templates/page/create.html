@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" th:href="@{/css/indexStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/createStyle.css}">
+    <meta charset="UTF-8">
+    <title>Создать объявление</title>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header" th:insert="block/header"></header>
+    <main class="main">
+        <form class="main__create" th:action="@{/task/create}" th:object="${car}" method="post" enctype="multipart/form-data">
+            <p>Введите марку автомобиля</p>
+            <input class="main_create__input" type="text" placeholder="Марка автомобиля" required>
+            <p>Введите марку автомобиля</p>
+            <input class="main_create__input" type="file" placeholder="Загрузите картинку" required>
+            <p>Введите марку автомобиля</p>
+            <input class="main_create__input" type="text" placeholder="Укажите тип двигателя" required>
+            <p>Введите марку автомобиля</p>
+            <input class="main_create__input" type="text" placeholder="Укажите имя владельца" required>
+            <p>Введите марку автомобиля</p>
+            <input class="main_create__input" type="text" placeholder="Укажите цену" required>
+            <p>Введите марку автомобиля</p>
+            <input class="main_create__input" type="date" placeholder="Укажите дату начала владения авто" required>
+            <p>Введите марку автомобиля</p>
+            <textarea class="main_create__input" type="text" placeholder="Описание"></textarea>
+            <button class="main__button" type="submit">
+                Сохранить
+            </button>
+            <a th:href="@{/}">Отмена</a>
+        </form>
+    </main>
+    <footer class="footer" th:insert="block/footer"></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,159 @@
+@font-face {
+    font-family: "Warnes";
+    src: url("../fonts/Warnes-Regular.ttf");
+}
+
+@font-face {
+    font-family: "MontserratAlternate";
+    src: url("../fonts/MontserratAlternates-Regular.ttf");
+}
+
+:root {
+    --black-color: #000000;
+    --white-color: #FFFFFF;
+    --bisque-color: #CDBEA7;
+    --gold-color: #C29545;
+
+    --bg-color-red-pastel: #882426;
+    --bg-color-grey-ash: #323030;
+
+
+
+    --bg-color-bisque-light: #FFF0DF;
+    --bg-color-blue: #295369;
+    --bg-color-blue-light: #B7C8D0;
+    --bg-color-green: #2D754F;
+    --bg-color-green-light: #B4DAC5;
+    --bg-color-grey-light: #c0b7ad;
+    --bg-color-magenta: #9A4063;
+    --bg-color-magenta-light: #EEC4D4;
+
+    --font-family-logo: 'Warnes', sans-serif;
+    --font-family-main: 'MontserratAlternate', sans-serif;
+
+    --font-size-tiny: 15px;
+    --font-size-light: 20px;
+    --font-size-medium: 30px;
+    --font-size-height: 50px;
+    --font-size-h4: 32px;
+    --font-size-h3: 36px;
+    --font-size-h2: 48px;
+    --font-size-h1: 58px;
+}
+
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--font-family-main);
+    text-decoration: none;
+}
+
+.wrapper {
+    margin: auto;
+
+    width: 80%;
+
+    background-color: var(--bg-color-grey-ash);
+}
+
+/*Хедер*/
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom-left-radius: 30px;
+
+    background-color: var(--bg-color-red-pastel);
+
+    color: var(--bisque-color);
+}
+
+.header__logo {
+    display: flex;
+
+    text-decoration: none;
+}
+
+.header__logo__img {
+    margin: 5px 10px 10px 10px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background-color: var(--white-color);
+}
+
+.header__logo__img>img {
+    width: 100%;
+}
+
+.header__logo__text {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo__text>p {
+    padding-bottom: 5px;
+
+    font-family: var(--font-family-logo);
+    font-size: var(--font-size-light);
+    color: var(--bisque-color);
+}
+
+.header__user {
+    display: flex;
+    align-items: center;
+}
+
+.header__user>a {
+    padding-bottom: 5px;
+    padding-right: 10px;
+
+    font-size: var(--font-size-light);
+    color: var(--bisque-color);
+}
+
+/*Основная часть*/
+
+.main__filter {
+    margin: 10px;
+
+    background-color: var(--bisque-color);
+
+    border: 3px solid var(--bg-color-red-pastel);
+    border-radius: 20px;
+}
+
+.main__list {
+    margin: 10px;
+
+    background-color: var(--bisque-color);
+
+    border: 3px solid var(--bg-color-red-pastel);
+    border-radius: 20px;
+}
+
+/*Подвал*/
+
+.footer {
+    padding: 20px 0px 20px 0px;
+
+    border-top-right-radius: 30px;
+
+    background-color: var(--bg-color-red-pastel);
+
+    color: var(--bisque-color);
+}
+
+.footer>span, .footer>a {
+    margin-left: 10px;
+
+    text-decoration: none;
+    color: var(--bisque-color);
+}

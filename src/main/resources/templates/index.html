@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" th:href="@{/css/indexStyle.css}">
+    <meta charset="UTF-8">
+    <title>Домашнаяя страница</title>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header" th:insert="block/header"></header>
+    <main class="main">
+        <section class="main__filter">
+            <div class="main__filter__filters">
+
+            </div>
+            <button class="main__filter__button" type="submit">
+
+            </button>
+        </section>
+        <section class="main__list">
+            <ul>
+                <li>
+                    <div class="main__list__card">
+                        <img class="main__list__card__img" src="" alt="">
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer" th:insert="block/footer"></footer>
+</div>
+</body>
+</html>
