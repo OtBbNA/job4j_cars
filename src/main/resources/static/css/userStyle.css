@@ -1,0 +1,121 @@
+.main {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.main__login {
+
+    padding: 10px;
+
+    width: 310px;
+
+    background-color: var(--bisque-color);
+
+    border: 3px solid var(--bg-color-red-pastel);
+    border-radius: 20px;
+}
+
+.main__content__logo {
+    display: flex;
+
+    margin-bottom: 15px;
+}
+
+.main__content__logo>img {
+    border-radius: 50%;
+
+    background-color: var(--white-color);
+}
+
+.main__content__logo__text {
+    padding-top: 3px;
+    padding-left: 10px;
+
+    font-family: var(--font-family-logo);
+    font-size: var(--font-size-light);
+}
+
+.main__content__logo__img {
+    width: 35px;
+}
+
+.main__login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    font-size: var(--font-size-light);
+    color: var(--dark-blue-color);
+
+    overflow-y: unset;
+
+    box-shadow: 0px 1px 5px 0px var(--schadow-gray-color);
+}
+
+.main__login>p, .main__login>input {
+    align-self: flex-start;
+
+    font-size: var(--font-size-extra-light);
+    color: var(--bg-gray-light-color);
+}
+
+.main__login>p:first-child {
+    margin-bottom: 15px;
+
+    color: var(--red-color);
+}
+
+.main__login>input {
+    width: 100%;
+}
+
+.main__login>input, .main__login>select {
+    margin-bottom: 15px;
+
+    padding: 0px 5px;
+
+    border-radius: 10px;
+
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-tiny);
+    font-weight: 600;
+}
+
+.main__content__button {
+    margin-bottom: 10px;
+    padding: 0px 10px;
+
+    border-radius: 10px;
+
+    font-size: var(--font-size-tiny);
+    background-color: var(--green-color);
+}
+
+.main__content__button:hover {
+    box-shadow: 0px 1px 5px 0px var(--schadow-gray-color);
+}
+
+.main__login>a {
+    margin-top: 5px;
+    padding: 0px 10px;
+
+    border-radius: 15px;
+
+    background-color: var(--bg-blue-light-color);
+
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-tiny);
+    color: var(--dark-blue-color);
+}
+
+.main__login>a:hover {
+    box-shadow: 0px 1px 5px 0px var(--schadow-gray-color);
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/indexStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/userStyle.css}">
+
+    <title>Регистрация</title>
+</head>
+<body>
+<div class="wrapper">
+    <header class="header" th:insert="block/header"></header>
+    <main class="main">
+        <form class="main__login" th:action="@{/user/register}" method="post">
+            <p th:if="${error}" th:text="${error}"></p>
+            <div class="main__content__logo">
+                <img class="main__content__logo__img" th:src="@{/img/logo.svg}" alt="#">
+                <p class="main__content__logo__text">CarSmartBuy</p>
+            </div>
+            <p>Введите имя пользователя</p>
+            <input type="text" id="name" name="name" placeholder="Иван" maxlength="20"
+                   required>
+            <p>Введите почту</p>
+            <input type="email" id="login" name="login" placeholder="ivan@mail.ru" required>
+            <p>Введите пароль</p>
+            <input type="password" id="password" name="password" maxlength="16" required>
+            <button class="main__content__button" type="submit">Зарегистрироваться</button>
+            <a th:href="@{/user/login}">Отмена</a>
+        </form>
+    </main>
+    <footer class="footer" th:insert="block/footer"></footer>
+</div>
+</body>
+</html>
