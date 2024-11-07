@@ -19,4 +19,5 @@
 <!--    <include file="scripts/012_ddl_create_files_table.sql" relativeToChangelogFile="true"/>-->
 <!--    <include file="scripts/014_ddl_create_brand_table.sql" relativeToChangelogFile="true"/>-->
 <!--    <include file="scripts/015_ddl_alter_car_table_brand_id.sql" relativeToChangelogFile="true"/>-->
+<!--    <include file="scripts/016_ddl_alter_auto_user_table.sql" relativeToChangelogFile="true"/>-->
 </databaseChangeLog>

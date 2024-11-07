@@ -15,6 +15,7 @@
     --gold-color: #C29545;
 
     --bg-color-red-pastel: #882426;
+    --bg-color-green-light: #216F1D;
     --bg-color-grey-ash: #323030;
 
 
@@ -23,7 +24,6 @@
     --bg-color-blue: #295369;
     --bg-color-blue-light: #B7C8D0;
     --bg-color-green: #2D754F;
-    --bg-color-green-light: #B4DAC5;
     --bg-color-grey-light: #c0b7ad;
     --bg-color-magenta: #9A4063;
     --bg-color-magenta-light: #EEC4D4;
@@ -51,6 +51,12 @@
     text-decoration: none;
 }
 
+body {
+    min-height: 100vh;
+
+    background-color: var(--bg-color-grey-ash);
+}
+
 .wrapper {
     margin: auto;
 
@@ -74,6 +80,8 @@
 
 .header__logo {
     display: flex;
+
+    border-left: 3px solid var(--bg-color-red-pastel);
 
     text-decoration: none;
 }
@@ -121,6 +129,13 @@
 
 /*Основная часть*/
 
+.main {
+    border-right: 3px solid var(--bg-color-red-pastel);
+    border-left: 3px solid var(--bg-color-red-pastel);
+
+    min-height: calc(100vh - (65px + 59px));
+}
+
 .main__filter {
     margin: 10px;
 
@@ -142,7 +157,8 @@
 /*Подвал*/
 
 .footer {
-    padding: 20px 0px 20px 0px;
+    display: flex;
+    justify-content: space-between;
 
     border-top-right-radius: 30px;
 
@@ -151,9 +167,20 @@
     color: var(--bisque-color);
 }
 
-.footer>span, .footer>a {
+.footer__info {
+    padding: 20px 0px 20px 0px;
+}
+
+.footer__info>span, .footer__info>a {
     margin-left: 10px;
 
     text-decoration: none;
     color: var(--bisque-color);
 }
+
+.footer__decor {
+    width: 10px;
+
+    border-right: 3px solid var(--bg-color-red-pastel);
+}
+

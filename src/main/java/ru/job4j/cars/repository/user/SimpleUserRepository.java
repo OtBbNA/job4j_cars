@@ -2,8 +2,11 @@ package ru.job4j.cars.repository.user;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.job4j.cars.model.User;
 import ru.job4j.cars.repository.CrudRepository;
+import ru.job4j.cars.repository.car.SimpleCarRepository;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +15,9 @@ import java.util.Optional;
 @Repository
 @AllArgsConstructor
 public class SimpleUserRepository implements UserRepository {
+
     private final CrudRepository crudRepository;
+    private static final Logger LOG = LoggerFactory.getLogger(SimpleCarRepository.class.getName());
 
     /**
      * Сохранить в базе.
@@ -20,9 +25,14 @@ public class SimpleUserRepository implements UserRepository {
      * @return пользователь с id.
      */
     @Override
-    public User create(User user) {
-        crudRepository.run(session -> session.persist(user));
-        return user;
+    public Optional<User> create(User user) {
+        try {
+            crudRepository.run(session -> session.save(user));
+            return Optional.of(user);
+        } catch (Exception e) {
+            LOG.error("Ошибка при сохранении нового пользователя: " + e.getMessage(), e);
+        }
+        return Optional.empty();
     }
 
     /**
@@ -91,5 +101,17 @@ public class SimpleUserRepository implements UserRepository {
                 "from User where login = :fLogin", User.class,
                 Map.of("fLogin", login)
         );
+    }
+
+    /**
+     * Найти пользователя по login.
+     * @param login login.
+     * @param password password.
+     * @return Optional or user.
+     */
+    @Override
+    public Optional<User> findByEmailAndPassword(String login, String password) {
+        return crudRepository.optional("FROM User AS i WHERE  login = :fLogin AND password = :fPassword", User.class,
+                Map.of("fLogin", login, "fPassword", password));
     }
 }

@@ -3,20 +3,19 @@ package ru.job4j.cars.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.job4j.cars.model.Car;
+import ru.job4j.cars.model.Post;
 import ru.job4j.cars.service.car.CarService;
 import ru.job4j.cars.service.post.PostService;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping({"car"})
+@RequestMapping({"post"})
 @AllArgsConstructor
-public class CarController {
+public class PostController {
 
     private CarService carService;
     private PostService postService;
@@ -27,8 +26,8 @@ public class CarController {
     }
 
     @PostMapping({"create"})
-    public String getCreatePage(@ModelAttribute Car car, Model model, HttpSession session) {
-        carService.create(car);
+    public String getCreatePage(@ModelAttribute Post post, @RequestParam MultipartFile file, Model model, HttpSession session) {
+        postService.create(post);
         return "page/create";
     }
 
