@@ -27,7 +27,7 @@ public class SimpleUserRepository implements UserRepository {
     @Override
     public Optional<User> create(User user) {
         try {
-            crudRepository.run(session -> session.save(user));
+            crudRepository.run(session -> session.persist(user));
             return Optional.of(user);
         } catch (Exception e) {
             LOG.error("Ошибка при сохранении нового пользователя: " + e.getMessage(), e);
