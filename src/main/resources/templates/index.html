@@ -11,17 +11,402 @@
     <main class="main">
         <section class="main__filter">
             <div class="main__filter__filters">
-
+                <select>
+                    <option>Марка машины</option>
+                    <option>Марка машины1</option>
+                    <option>Марка машины2</option>
+                </select>
+                <select>
+                    <option>Тип двигателя</option>
+                    <option>Тип двигателя1</option>
+                    <option>Тип двигателя2</option>
+                </select>
+                <select>
+                    <option>Тип кузова</option>
+                    <option>Тип кузова1</option>
+                    <option>Тип кузова2</option>
+                </select>
+                <select>
+                    <option>Тип кузова</option>
+                    <option>Тип кузова1</option>
+                    <option>Тип кузова2</option>
+                </select>
             </div>
+            <a th:href="@{/}">
+                Сбросить
+            </a>
             <button class="main__filter__button" type="submit">
-
+                Применить
             </button>
         </section>
         <section class="main__list">
             <ul>
-                <li>
-                    <div class="main__list__card">
-                        <img class="main__list__card__img" src="" alt="">
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1" th:style="'background-image: url(' + @{/img/delete1.jpg} + ');'">
+                            <div class="a2" th:attr="data-bg=@{/img/delete1.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete2.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete3.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete4.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete5.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete5.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete5.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete5.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2" th:attr="data-bg=@{/img/delete1.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2" th:attr="data-bg=@{/img/delete2.jpg}">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="main__list__card__name"></p>
+                        <p class="main__list__card__price"></p>
+                    </div>
+                </li>
+                <li class="main__list__card">
+                    <div class="main__list__card__space">
+                        <div class="a1">
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                            <div class="a2">
+                                <div class="a3">
+
+                                </div>
+                            </div>
+                        </div>
                         <p class="main__list__card__name"></p>
                         <p class="main__list__card__price"></p>
                     </div>
@@ -31,5 +416,24 @@
     </main>
     <footer class="footer" th:insert="block/footer"></footer>
 </div>
+<script th:src="@{/js/sliderScript.js}"></script>
 </body>
 </html>
+
+<!--                        <ul class="main__list__card__images">-->
+<!--                            <li>-->
+<!--                                <img class="main__list__card__images__img" th:src="@{/img/delete1.jpg}" alt="#">-->
+<!--                            <li>-->
+<!--                            <li>-->
+<!--                                <img class="main__list__card__images__img" th:src="@{/img/delete2.jpg}" alt="#">-->
+<!--                            <li>-->
+<!--                            <li>-->
+<!--                                <img class="main__list__card__images__img" th:src="@{/img/delete3.jpg}" alt="#">-->
+<!--                            <li>-->
+<!--                            <li>-->
+<!--                                <img class="main__list__card__images__img" th:src="@{/img/delete4.jpg}" alt="#">-->
+<!--                            <li>-->
+<!--                            <li>-->
+<!--                                <img class="main__list__card__images__img" th:src="@{/img/delete5.jpg}" alt="#">-->
+<!--                            <li>-->
+<!--                        </ul>-->
