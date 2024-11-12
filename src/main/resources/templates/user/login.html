@@ -11,7 +11,7 @@
 <div class="wrapper">
     <header class="header" th:insert="block/header"></header>
     <main class="main">
-        <form class="main__login">
+        <form class="main__login" th:action="@{/user/login}" method="post">
             <p th:if="${error}" th:text="${error}"></p>
             <div class="main__login__logo">
                 <img class="main__login__logo__img" th:src="@{/img/logo.svg}" alt="#">

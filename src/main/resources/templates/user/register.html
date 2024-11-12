@@ -23,7 +23,7 @@
             <p>Введите почту</p>
             <input type="email" id="login" name="login" placeholder="ivan@mail.ru" required>
             <p>Введите пароль</p>
-            <input type="password" id="password" name="password" maxlength="16" required>
+            <input type="password" id="password" name="password" minlength="8" maxlength="16" required>
             <button class="main__login__button" type="submit">Зарегистрироваться</button>
             <a th:href="@{/user/login}">Отмена</a>
         </form>

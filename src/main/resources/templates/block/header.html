@@ -6,7 +6,10 @@
         <p>CarSmartBuy</p>
     </div>
 </a>
-<div class="header__user">
-    <a th:href="@{/}">Личный кабинет</a>
-    <a th:href="@{/}">Войти</a>
+<div class="header__user" th:if="${user.name == 'Гость'}">
+    <a th:href="@{/user/login}">Войти</a>
+</div>
+<div class="header__user" th:if="${user.name != 'Гость'}">
+    <a th:href="@{/user/account}" th:text="${user.name}">Личный кабинет</a>
+    <a th:href="@{/user/logout}">Выйти</a>
 </div>
