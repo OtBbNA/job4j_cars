@@ -10,23 +10,23 @@
 <div class="wrapper">
     <header class="header" th:insert="block/header"></header>
     <main class="main">
-        <form class="main__create" th:action="@{/post/create}" th:object="${car}" method="post" enctype="multipart/form-data">
+        <form class="main__create" th:action="@{/post/create}" method="post" enctype="multipart/form-data">
             <label for="carName">Введите модель автомобиля</label>
-            <input class="main_create__input" type="text" id="carName" name="car.name" placeholder="Модель автомобиля" required>
+            <input class="main_create__input" type="text" id="carName" name="post.car.name" placeholder="Модель автомобиля" required>
             <label for="brand">Введите марку автомобиля</label>
-            <input class="main_create__input" type="text" id="brand" name="car.brand" placeholder="Марка автомобиля" required>
+            <input class="main_create__input" type="text" id="brand" name="post.car.brand" placeholder="Марка автомобиля" required>
             <label for="engine">Укажите тип двигателя автомобиля</label>
-            <input class="main_create__input" type="text" id="engine" name="car.engine" placeholder="Тип двигателя" required>
+            <input class="main_create__input" type="text" id="engine" name="post.car.engine" placeholder="Тип двигателя" required>
             <label for="owner">Укажите владельца авто</label>
-            <input class="main_create__input" type="text" id="owner" name="car.owner" placeholder="Укажите имя владельца" required>
+            <input class="main_create__input" type="text" id="owner" name="post.car.owner" placeholder="Укажите имя владельца" required>
             <label for="priceHistory">Укажите стоимость автомобиля</label>
-            <input class="main_create__input" type="text" id="priceHistory" name="priceHistory" placeholder="Укажите цену" required>
+            <input class="main_create__input" type="text" id="priceHistory" name="post.priceHistories[0].before" placeholder="Укажите цену" required>
             <label for="history" class="form-label">Начало владения автомобилем</label>
-            <input class="main_create__input" type="date" id="history" name="history" placeholder="Укажите дату начала владения авто" required>
+            <input class="main_create__input" type="date" id="history" name="post.priceHistories[0].created" placeholder="Укажите дату начала владения авто" required>
             <label for="files">Загрузите фото</label>
             <input type="file" id="files" name="files" multiple required>
             <label for="description">Описание</label>
-            <textarea class="main_create__input" type="text" id="description" name="description" placeholder="Описание"></textarea>
+            <textarea class="main_create__input" type="text" id="description" name="post.description" placeholder="Описание"></textarea>
             <button class="main__button" type="submit">
                 Сохранить
             </button>

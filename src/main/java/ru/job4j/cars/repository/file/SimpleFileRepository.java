@@ -30,6 +30,11 @@ public class SimpleFileRepository implements FileRepository {
     }
 
     @Override
+    public List<File> findAllByPost(int postId) {
+        return crudRepository.query("from File where post_id = :fPostId", File.class, Map.of("fId", postId));
+    }
+
+    @Override
     public List<File> findAll() {
         return crudRepository.query("from File", File.class);
     }

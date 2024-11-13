@@ -1,5 +1,6 @@
 package ru.job4j.cars.service.post;
 
+import ru.job4j.cars.dto.FileDto;
 import ru.job4j.cars.model.Brand;
 import ru.job4j.cars.model.Post;
 
@@ -8,7 +9,7 @@ import java.util.Optional;
 
 public interface PostService {
 
-    Post create(Post post);
+    Post create(Post post, List<FileDto> fileDto);
 
     void update(Post post);
 
