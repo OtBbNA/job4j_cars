@@ -144,37 +144,35 @@ class SimplePostRepositoryTest {
 
     @Test
     void whenFindAllByImageThenGetListByPostsWithImage() {
-//        Post post1 = new Post();
-//        post1.setDescription("test1");
-//        Post post2 = new Post();
-//        post2.setDescription("test2");
-//
-//        postRepository.create(post1);
-//        postRepository.create(post2);
-//
-//        File file1 = new File();
-//        file1.setName("file1");
-//        file1.setPath("path1");
-//        file1.setPostId(post1.getId());
-//
-//        File file2 = new File();
-//        file2.setName("file2");
-//        file2.setPath("path2");
-//        file2.setPostId(post2.getId());
-//
-//        fileRepository.save(file1);
-//        fileRepository.save(file2);
-//
-//        post1.setFiles(List.of(file1));
-//        post2.setFiles(List.of(file2));
-//
-//        postRepository.update(post1);
-//        postRepository.update(post2);
-//
-//        var expected = List.of(post1, post2);
-//        var result = postRepository.findAllByImage();
-//
-//        assertThat(result).isEqualTo(expected);
+        Post post1 = new Post();
+        post1.setDescription("test1");
+        Post post2 = new Post();
+        post2.setDescription("test2");
+
+        postRepository.create(post1);
+        postRepository.create(post2);
+
+        File file1 = new File();
+        file1.setName("file1");
+        file1.setPath("path1");
+
+        File file2 = new File();
+        file2.setName("file2");
+        file2.setPath("path2");
+
+        fileRepository.save(file1);
+        fileRepository.save(file2);
+
+        post1.setFiles(List.of(file1));
+        post2.setFiles(List.of(file2));
+
+        postRepository.update(post1);
+        postRepository.update(post2);
+
+        var expected = List.of(post1, post2);
+        var result = postRepository.findAllByImage();
+
+        assertThat(result).hasSize(2).isEqualTo(expected);
     }
 
     @Test

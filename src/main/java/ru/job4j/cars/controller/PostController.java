@@ -33,13 +33,10 @@ public class PostController {
     }
 
     @PostMapping("/create")
-    public String getCreatePage(@ModelAttribute Post post, BindingResult result, @RequestParam("files") List<MultipartFile> files, Model model, HttpSession session) {
+    public String getCreatePage(@ModelAttribute Post post, @RequestParam("files") List<MultipartFile> files, Model model, HttpSession session) {
         carService.create(post.getCar());
         for (PriceHistory ph: post.getPriceHistories()) {
             priceHistoryService.create(ph);
-        }
-        if (result.hasErrors()) {
-            System.out.println("Errors: " + result.getAllErrors());
         }
         post.setUser((User) session.getAttribute("user"));
         List<FileDto> postFiles = new ArrayList<>();
