@@ -1,15 +1,14 @@
 package ru.job4j.cars.service.price;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import ru.job4j.cars.model.PriceHistory;
 import ru.job4j.cars.repository.price.PriceHistoryRepository;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
-@Repository
+@Service
 @AllArgsConstructor
 public class SimplePriceHistoryService implements PriceHistoryService {
 

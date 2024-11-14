@@ -3,6 +3,7 @@ package ru.job4j.cars.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.job4j.cars.dto.FileDto;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping({"post"})
+@RequestMapping("/post")
 @AllArgsConstructor
 public class PostController {
 
@@ -26,22 +27,27 @@ public class PostController {
     private PriceHistoryService priceHistoryService;
     private PostService postService;
 
-    @GetMapping({"create"})
+    @GetMapping("/create")
     public String getCreatePage() {
         return "page/create";
     }
 
-    @PostMapping({"create"})
-    public String getCreatePage(@ModelAttribute Post post, @RequestParam List<MultipartFile> files, Model model, HttpSession session) {
+    @PostMapping("/create")
+    public String getCreatePage(@ModelAttribute Post post, BindingResult result, @RequestParam("files") List<MultipartFile> files, Model model, HttpSession session) {
         carService.create(post.getCar());
         for (PriceHistory ph: post.getPriceHistories()) {
             priceHistoryService.create(ph);
         }
+        if (result.hasErrors()) {
+            System.out.println("Errors: " + result.getAllErrors());
+        }
         post.setUser((User) session.getAttribute("user"));
+        List<FileDto> postFiles = new ArrayList<>();
         try {
-            List<FileDto> postFiles = new ArrayList<>();
             for (var mpf : files) {
-                postFiles.add(new FileDto(mpf.getOriginalFilename(), mpf.getBytes()));
+                if (!mpf.isEmpty()) {
+                    postFiles.add(new FileDto(mpf.getOriginalFilename(), mpf.getBytes()));
+                }
             }
             postService.create(post, postFiles);
             return "/";

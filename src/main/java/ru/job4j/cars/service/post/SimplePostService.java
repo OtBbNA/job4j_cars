@@ -1,7 +1,7 @@
 package ru.job4j.cars.service.post;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import ru.job4j.cars.dto.FileDto;
 import ru.job4j.cars.model.Brand;
 import ru.job4j.cars.model.Post;
@@ -11,7 +11,7 @@ import ru.job4j.cars.service.file.FileService;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Service
 @AllArgsConstructor
 public class SimplePostService implements PostService {
 
