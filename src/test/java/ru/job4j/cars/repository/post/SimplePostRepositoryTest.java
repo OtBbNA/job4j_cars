@@ -46,6 +46,9 @@ class SimplePostRepositoryTest {
 
     @AfterEach
     public void clear() {
+        for (File file : fileRepository.findAll()) {
+            fileRepository.deleteById(file.getId());
+        }
         for (Post post : postRepository.findAllOrderById()) {
             postRepository.delete(post.getId());
         }
